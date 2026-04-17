@@ -125,20 +125,58 @@ padding:10px;
 margin-top:40px;
 }
 
-/* MOBILE */
+/* MOBILE IMPROVEMENTS */
 
 @media (max-width:600px){
 
+body{
+padding:10px;
+}
+
 .header-container{
 flex-direction:column;
+gap:10px;
+padding:10px;
+}
+
+.header-container img{
+width:80px;
 }
 
 .common{
-font-size:22px;
+font-size:20px;
+margin:15px 5px;
+}
+
+.issue-images{
+flex-direction:column;
+align-items:center;
+}
+
+.issue-images img{
+max-width:90%;
+}
+
+.form-container{
+width:100%;
+padding:15px;
+margin:20px auto;
+}
+
+input,select,textarea{
+font-size:14px;
+padding:8px;
 }
 
 button{
 width:100%;
+font-size:16px;
+padding:12px;
+}
+
+footer{
+font-size:14px;
+padding:8px;
 }
 
 }
@@ -219,13 +257,9 @@ Common Hostel Issues
 
 <br><br>
 
-<button type="submit">Submit Complaint</button>
+<button type="submit" id="submitBtn">Submit Complaint</button>
 <br><br><a href="track.html">Click here to check status</a>
 <br>
-
-
-
-
 
 </form>
 
@@ -240,9 +274,12 @@ Common Hostel Issues
 
 <script>
 
-
 async function showMessage(event){
     event.preventDefault();
+
+    const btn = document.getElementById("submitBtn");
+    btn.innerText = "Submitting...";
+    btn.disabled = true;
 
     const data = {
         name: document.getElementById("name").value,
@@ -272,7 +309,11 @@ async function showMessage(event){
         document.getElementById("msg").innerHTML =
         "❌ Error submitting complaint";
     }
+
+    btn.innerText = "Submit Complaint";
+    btn.disabled = false;
 }
+
 </script>
 
 </body>
